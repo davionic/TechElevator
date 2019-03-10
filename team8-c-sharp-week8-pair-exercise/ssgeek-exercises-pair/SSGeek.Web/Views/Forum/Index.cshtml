@@ -1,0 +1,34 @@
+﻿@model ForumPostViewModel
+@{
+    ViewData["Title"] = "SolarSystemGeekForum";
+}
+
+<section class="centeredPanel">
+
+    @if (!string.IsNullOrEmpty(Model.NewPostResult))
+    {
+        <div class="new-item-confirm alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <strong>Success!</strong> @Model.NewPostResult
+        </div>
+    }
+
+    <h2>Solar System Geek Forum</h2>
+
+    <div class="post">
+        <a asp-action="NewPost" asp-controller="forum">Post a message</a>
+    </div>
+
+    <ul class="forumpost">
+        @foreach (var forumPost in Model.Results)
+        {
+            <li class="forumpost">
+                <div class="postsubject">@forumPost.Subject</div>
+                <div>by @forumPost.UserName on @forumPost.SubmittedAt</div>
+                <div>@forumPost.Message</div>
+            </li>
+        }
+    </ul>
+
+</section>
+    }

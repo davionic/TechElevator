@@ -1,0 +1,28 @@
+﻿@model List<Recipe>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2 class="header">All Recipes</h2>
+
+
+<div class="grid-container">
+
+    @foreach (Recipe recipe in Model)
+    {
+        <div class="recipeBackground">
+            <a asp-controller="recipes" asp-action="Detail" asp-route-id="@recipe.Id">
+                <img id="indexImage" src="~/images/@recipe.ImageName" />
+            </a>
+
+            <a asp-controller="recipes" asp-action="Detail" asp-route-id="@recipe.Id">
+                <p>@recipe.Name</p>
+            </a>
+
+            <img id="starpicture" src="~/images/@((int)recipe.AverageRating)-star.png" />
+            <p id="ingredients">@recipe.Ingredients.Count Ingredients</p>
+        </div>
+    }
+
+</div>

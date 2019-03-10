@@ -1,0 +1,48 @@
+﻿@model AlienWeightViewModel
+
+@{
+    ViewData["Title"] = "Alien Weight Result";
+
+}
+
+@{ decimal alienWeight = 0;
+
+    switch(Model.Planet)
+    {
+        case "Mercury":
+            alienWeight = Model.EarthWeight * 0.37M;
+            break;
+        case "Venus":
+            alienWeight = Model.EarthWeight * 0.90M;
+            break;
+        case "Mars":
+            alienWeight = Model.EarthWeight * 0.38M;
+            break;
+        case "Jupiter":
+            alienWeight = Model.EarthWeight * 2.65M;
+            break;
+        case "Saturn":
+            alienWeight = Model.EarthWeight * 1.13M;
+            break;
+        case "Uranus":
+            alienWeight = Model.EarthWeight * 1.09M;
+            break;
+        case "Neptune":
+            alienWeight = Model.EarthWeight * 1.43M;
+            break;
+
+
+    }
+    }
+
+<section id="calculatorResult" class="centeredPanel">
+
+
+    <div id="picandreturn">
+        <img id="planet_pic" src="~/images/@(Model.Planet).jpg" />
+
+        <h2 class="weightReturn">
+            If you weighed @Model.EarthWeight lbs. on Earth then you would weigh @alienWeight lbs. on @Model.Planet.
+        </h2>
+    </div>
+</section>

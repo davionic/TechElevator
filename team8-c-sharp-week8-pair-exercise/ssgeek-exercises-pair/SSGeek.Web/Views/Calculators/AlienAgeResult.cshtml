@@ -1,0 +1,48 @@
+﻿@model AlienAgeViewModel
+@{
+    ViewData["Title"] = "AlienAgeResult";
+}
+
+<h2>AlienAgeResult</h2>
+
+@{ decimal alienAge = 0;
+
+    switch (Model.Planet)
+    {
+        case "Mercury":
+            alienAge = Model.EarthAge / 0.24M;
+            break;
+        case "Venus":
+            alienAge = Model.EarthAge / 0.615M;
+            break;
+        case "Mars":
+            alienAge = Model.EarthAge / 1.88M;
+            break;
+        case "Jupiter":
+            alienAge = Model.EarthAge / 11.862M;
+            break;
+        case "Saturn":
+            alienAge = Model.EarthAge / 29.456M;
+            break;
+        case "Uranus":
+            alienAge = Model.EarthAge / 84.07M;
+            break;
+        case "Neptune":
+            alienAge = Model.EarthAge / 164.81M;
+            break;
+
+
+    }
+}
+
+<section id="calculatorResult" class="centeredPanel">
+
+
+    <div id="picandreturn">
+        <img id="planet_pic" src="~/images/@(Model.Planet).jpg" />
+
+        <h2 class="weightReturn">
+            If you are @Model.EarthAge years old on planet Earth, then you are @Decimal.Round(alienAge, 2) @Model.Planet years old.
+        </h2>
+    </div>
+</section>

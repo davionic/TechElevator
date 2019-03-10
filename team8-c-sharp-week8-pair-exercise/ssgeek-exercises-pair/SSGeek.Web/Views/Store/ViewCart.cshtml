@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "ViewCart";
+}
+
+<h2>ViewCart</h2>
+
+<h2>View Cart</h2>
+
+<table class="table table-striped">
+    <tr>
+        <td></td>
+        <td class="shoppingcartheadandfoot">Item</td>
+        <td class="shoppingcartheadandfoot">Cost</td>
+        <td class="shoppingcartheadandfoot">Qty.</td>
+        <td class="shoppingcartheadandfoot">Subtotal</td>
+    </tr>
+
+    @* Loop Through the Items in the Cart and Display Them Here *@
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                <form method="post" asp-action="RemoveFromCart" asp-controller="Store">
+                    <input type="hidden" value="@item.Product.Id" name="id" />
+                    <button id="removebutton">Remove 1</button>
+                </form>
+            </td>
+            <td class="shoppingcartitem">@item.Product.Name</td>
+            <td class="shoppingcartitem">@item.Product.Cost</td>
+            <td class="shoppingcartitem">@item.Quantity</td>
+            <td class="shoppingcartitem">@((item.Product.Cost * item.Quantity).ToString("C"))</td>
+        </tr>
+    }
+
+    <tr>
+        <td class="shoppingcartheadandfoot" colspan="4">Grand Total</td>
+        <td class="shoppingcartheadandfoot">@Model.GrandTotal.ToString("C")</td>
+    </tr>
+</table>
+

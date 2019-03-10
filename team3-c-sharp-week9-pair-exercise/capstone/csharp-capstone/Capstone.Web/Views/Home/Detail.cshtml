@@ -1,0 +1,55 @@
+﻿@model DetailViewModel
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="park">
+    <h3 class="detail-title">@Model.Park.Name</h3>
+
+    <img class="image-style" src="~/images/@(Model.Park.Code.ToLower()).jpg" />
+
+    <p class="park-description">@Model.Park.Description</p>
+    <div class="detail-list">
+        <p><em>"@Model.Park.Quote"</em> - @Model.Park.QuotedPerson</p><br />
+        <p>State: @Model.Park.State</p>
+        <p>Acreage: @Model.Park.Acreage acres</p>
+        <p>Elevation: @Model.Park.Elevation ft.</p>
+        <p>Miles of Trail: @Math.Round(Model.Park.MilesOfTrail)</p>
+        <p>Number of Campsites: @Model.Park.NumberOfCampsites</p>
+        <p>Climate: @Model.Park.Climate</p>
+        <p>Founded: @Model.Park.YearFounded</p>
+        <p>Annual Visitors: @Model.Park.AnnualVisitors</p>
+        <p>Entry Fee: @Model.Park.EntryFee.ToString("C")</p>
+        <p>Number of Animal Species: @Model.Park.NumberOfSpecies</p>
+    </div>
+
+    <div class="weather">
+        @{
+            foreach (Weather weather in Model.Weathers)
+            {
+                <div class="weather-block">
+                    @{
+                        string msgs = "";
+                        foreach (string message in weather.Messages)
+                        {
+                            msgs += " " + message;
+                        }
+                    }
+
+                    Day @weather.Day:
+                    <img title="@msgs" class="weather-img" src="~/images/@(weather.Forecast.Replace(" ", String.Empty).ToLower()).png" />
+                    <div class="forecast-font">
+                        @weather.Forecast
+                    </div>
+                    <div class="forecast-font">
+                        High: @weather.HighTemp° @weather.TempUnit
+                    </div>
+                    <div class="forecast-font">
+                        Low: @weather.LowTemp° @weather.TempUnit
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

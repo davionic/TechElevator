@@ -1,0 +1,75 @@
+﻿#starpicture {
+    height: 40%;
+    width: 40%; 
+}
+
+#foodpicture{
+    height: 50%;
+    width: 50%;
+}
+
+
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+    overflow-wrap: break-word;
+}
+
+#ingredients {
+    display: inline;
+    margin-left: 50px;
+    margin-right: 0px;
+}
+
+.recipeBackground {
+    height: auto;
+    width: auto;
+    background-color: #ecffd3;
+
+}
+
+.info {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: 
+        "a b b b b";
+    grid-gap: 10px;
+
+}
+
+#detailImage{
+    grid-column: a;
+    
+}
+
+#titleTimeDesc{
+    grid-column: b;
+}
+
+.header{
+    padding-top: 2em;
+}
+
+.tableViewPictures {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: "a b c" "a b c" "a b c" "a b c" "a b c" "a b c";
+    grid-auto-flow: column;
+    align-items: center;
+    background-color: #ecffd3;
+}
+
+#rowTitles{
+    display: inline;
+    float: left;
+    padding-top: 126px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@model SurveyViewModel
+
+@{
+    ViewData["Title"] = "Survey";
+}
+
+<div>
+    <h2>Today's Survey Results</h2>
+
+    <p><em>What is your favorite National Park?</em></p>
+
+    @{
+        foreach (Survey survey in Model.SurveyResults)
+        {
+            if (Model.SurveyTally.ContainsKey(survey.Code))
+            {
+                Model.SurveyTally[survey.Code]++;
+            }
+            else
+            {
+                Model.SurveyTally[survey.Code] = 1;
+            }
+        }
+
+        <table>
+            <tr>
+                <th class="left-column">Park Name</th>
+                <th class="right-column">Votes</th>
+            </tr>
+
+            @{
+                foreach (KeyValuePair<string, int> kvp in Model.SurveyTally)
+                {
+                    <tr class="row-bg">
+                        <td class="left-column">@kvp.Key</td>
+                        <td class="right-column">@(kvp.Value)</td>
+                    </tr>
+                }
+            }
+        </table>
+    }
+    <br />
+
+    <span class="button"><a class="button-link" asp-controller="Survey" asp-action="NewSurvey">Take Today's Survey!</a></span>
+</div>

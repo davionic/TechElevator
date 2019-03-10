@@ -1,0 +1,43 @@
+﻿@model NewForumPostViewModel
+@{
+    ViewData["Title"] = "New Geek Post";
+}
+
+<section class="centeredPanel">
+    <h2>New Geek Post</h2>
+
+    <div class="forumform" />
+
+    <form asp-controller="Forum" asp-action="index" novalidate>
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div>
+            <label asp-for="UserName" class="control-label">Username</label>
+            <input asp-for="UserName" class="form-control" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Subject" class="control-label">Subject</label>
+            <input asp-for="Subject" class="form-control" />
+            <span asp-validation-for="Subject" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Message" class="control-label">Message</label>
+            <input asp-for="Message" class="form-control" />
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

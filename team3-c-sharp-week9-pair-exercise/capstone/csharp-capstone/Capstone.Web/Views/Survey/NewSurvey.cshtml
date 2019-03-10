@@ -1,0 +1,36 @@
+﻿@model NewSurveyViewModel
+
+@{
+    ViewData["Title"] = "New Survey";
+}
+
+<h2>Today's Survey</h2>
+<p><em>What is your favorite National Park?</em></p>
+
+<div>
+    <form asp-controller="Survey" asp-action="NewSurvey" asp-method="post">
+        <div>
+            <label class="form-label" asp-for="Survey.Code">Favorite Park: </label>
+            <select asp-for="Survey.Code" asp-items="NewSurveyViewModel.Parks"></select>
+            <span asp-validation-for="Survey.Code"></span>
+        </div>
+        <div>
+            <label class="form-label" asp-for="Survey.ActivityLevel">Activity Level: </label>
+            <select asp-for="Survey.ActivityLevel" asp-items="NewSurveyViewModel.Levels"></select>
+            <span asp-validation-for="Survey.ActivityLevel"></span>
+        </div>
+        <div>
+            <label class="form-label" asp-for="Survey.State">State of Residence: </label>
+            <input asp-for="Survey.State" />
+            <span asp-validation-for="Survey.State"></span>
+        </div>
+        <div>
+            <label class="form-label" asp-for="Survey.Email">Email Address: </label>
+            <input asp-for="Survey.Email" />
+            <span asp-validation-for="Survey.Email"></span>
+        </div>
+        <div>
+            <button class="button button-link" type="submit">Submit</button>
+        </div>
+    </form>
+</div>

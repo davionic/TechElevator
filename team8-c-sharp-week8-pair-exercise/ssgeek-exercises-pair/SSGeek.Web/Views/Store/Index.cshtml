@@ -1,0 +1,23 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="centeredPanel">
+
+    <h2>Solar System Geek Gift Shop</h2>
+
+    <ul>
+        @foreach (var product in Model.Products)
+        {
+        <li class="wholeproduct">
+            <a asp-controller="Store" asp-action="Detail" asp-route-id="@product.Id">
+                <img class="productimg" src="/images/@product.ProductImage" />
+            </a>
+            <div class="productname">@product.Name</div>
+            <div class="productcost">@product.Cost</div>
+        </li>
+        }
+    </ul>
+
+</section>

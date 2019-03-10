@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Capstone.DAL;
+using Capstone.Models;
+using System.Data.SqlClient;
+
+namespace Capstone
+{
+    public class UI
+    {
+        int parkChoice = 0;
+        private void DisplayParkNames()
+        {
+            ParksDAL ParkyParkDAL = new ParksDAL(DatabaseConnectionString);
+
+            List<string> parks = ParksDAL.DisplayParkNames();
+            int i = 1;
+
+            Console.WriteLine("View Parks Interface");
+            Console.WriteLine("Select a Park for Further Details");
+            parks.Sort();
+            foreach (string park in parks)
+            {
+                Console.WriteLine($"{i}. { park}");
+                i++;
+            }
+            Console.WriteLine("Q) quit");
+            parkChoice = int.Parse(Console.ReadLine());
+            return;
+        }
+
+
+       void DisplayParkInfo(parkChoice)
+        {
+            Console.WriteLine("Select a Command");
+            Console.WriteLine("1) View Campgrounds");
+            Console.WriteLine("2) Search for Reservation");
+            Console.WriteLine("3) Return to Previous Screen");
+        }
+
+
+    }
+}

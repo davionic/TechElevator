@@ -1,0 +1,71 @@
+﻿@model AlienTravelTimeViewModel
+@{
+    ViewData["Title"] = "AlienTravelTimeResult";
+}
+
+<h2>AlienTravelTimeResult</h2>
+
+@{ double planetDistance = 0;
+    double transportSpeed = 0;
+    double travelTime = 0;
+    double finalAge = 0;
+
+    switch (Model.Planet)
+    {
+        case "Mercury":
+            planetDistance = 56974146D;
+            break;
+        case "Venus":
+            planetDistance = 25724767D;
+            break;
+        case "Mars":
+            planetDistance = 48678219D;
+            break;
+        case "Jupiter":
+            planetDistance = 390674710D;
+            break;
+        case "Saturn":
+            planetDistance = 792248270D;
+            break;
+        case "Uranus":
+            planetDistance = 1692662530D;
+            break;
+        case "Neptune":
+            planetDistance = 2703959960D;
+            break;
+
+    }
+
+    switch (Model.TransportMode)
+    {
+        case "walking":
+            transportSpeed = 3D;
+            break;
+        case "car":
+            transportSpeed = 100D;
+            break;
+        case "bullet Train":
+            transportSpeed = 200D;
+            break;
+        case "boeing 747":
+            transportSpeed = 570D;
+            break;
+        case "concorde":
+            transportSpeed = 1350D;
+            break;
+    }
+    travelTime = (planetDistance / transportSpeed) / 8766.24;
+    finalAge = (double)Model.EarthAge + travelTime;
+
+<section id="calculatorResult" class="centeredPanel">
+
+
+    <div id="picandreturn">
+        <img id="planet_pic" src="~/images/@(Model.Planet).jpg" />
+
+        <h2 class="TravelReturn">
+            Traveling by @Model.TransportMode you will reach @Model.Planet  in @Math.Round(travelTime, 2) years. You will be @Math.Round(finalAge, 2) years old.
+        </h2>
+    </div>
+</section>
+    }

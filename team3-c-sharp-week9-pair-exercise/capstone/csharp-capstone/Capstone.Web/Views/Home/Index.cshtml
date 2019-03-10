@@ -1,0 +1,30 @@
+﻿@model ParkViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2 class="index-title">Beautiful National Parks</h2>
+
+<div class="temp-buttons">
+    <p>Temperature Preference</p>
+    <form asp-controller="Home" asp-action="ChangeTempUnit" asp-route-tempUnit="F">
+        <button class="button button-link" type="submit">Fahrenheit</button>
+    </form>
+    <form asp-controller="Home" asp-action="ChangeTempUnit" asp-route-tempUnit="C">
+        <button class="button button-link" type="submit">Celsius</button>
+    </form>
+</div><br />
+
+@{
+    foreach (Park park in Model.Parks)
+    {
+      <div class="park">
+          <h3 class="park-title">@park.Name — @park.State</h3>
+          <a asp-controller="Home" asp-action="Detail" asp-route-parkcode="@park.Code">
+              <img class="image-style" src="~/images/@(park.Code.ToLower()).jpg" />
+          </a>
+          <p class="park-description">@park.Description</p>
+      </div>        
+    }
+}

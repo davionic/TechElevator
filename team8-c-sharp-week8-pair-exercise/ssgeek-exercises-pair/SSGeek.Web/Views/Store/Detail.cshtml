@@ -1,0 +1,23 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<section class="centeredPanel">
+
+    <h2>Product Details</h2>
+
+
+    <img src="~/images/@Model.Product.ProductImage" />
+    <p>@Model.Product.Name</p>
+    <p>@Model.Product.Cost</p>
+    <p>@Model.Product.Description</p>
+
+    <form asp-action="AddToCart" asp-controller="Store" method="post">
+        @* Create a hidden input field to store the product id *@
+        <input type="hidden" asp-for="@Model.Id" />
+        <input type="hidden" name="quantity" value="10" />
+        <button>Add to Cart</button>
+    </form>
+
+</section>

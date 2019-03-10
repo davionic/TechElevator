@@ -1,0 +1,50 @@
+﻿@model List<Recipe>
+
+@{
+    ViewData["Title"] = "Table";
+}
+
+<h2 class="header">All Recipes</h2>
+
+
+<div id="rowTitles">
+    <p style="margin-bottom: 0px;">Name</p>
+    <p style="margin-bottom: 0px;">Type</p>
+    <p style="margin-bottom: 0px;">Cook Time</p>
+    <p style="margin-bottom: 0px;">Ingredients</p>
+    <p style="margin-bottom: 0px;">Rating</p>
+</div>
+
+<div class="tableViewPictures">
+
+    @foreach (Recipe recipe in Model)
+    {
+        <div style="background-color: white;">
+            <a asp-controller="recipes" asp-action="Detail" asp-route-id="@recipe.Id">
+            <img id="foodpicture" src="~/images/@recipe.ImageName" />
+            </a>
+        </div>
+        
+
+        <p style="margin-bottom: 0px;">@recipe.Name</p>
+        <p style="margin-bottom: 0px; background-color: white;">@recipe.RecipeType</p>
+        <p style="margin-bottom: 0px;">@recipe.CookTimeInMinutes min</p>
+        <p style="margin-bottom: 0px; background-color: white;">@recipe.Ingredients.Count Ingredients</p>
+        <img style="height: 30px;" id="starpicture" src="~/images/@((int)recipe.AverageRating)-star.png" />
+
+    }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
